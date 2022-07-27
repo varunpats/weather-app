@@ -1,8 +1,9 @@
+import apiKey from "./apikey.js"
+
 let weather = {
-    apiKey : "ba58a876e318397a75407aaf3d1bee19",
     fetchWeather : function(city) {
         fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${this.apiKey}`
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
         )
         .then((response) => response.json())
         .then((data)=> this.displayWeather(data))
@@ -17,7 +18,7 @@ let weather = {
         document.querySelector(".description").innerText = description;
         document.querySelector(".humidity").innerText = "Humidity: " + humidity +"%";
         document.querySelector(".wind").innerText = "Wind Speed: " + speed +"km/h";
-        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + description + "')";
+        document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?" + name + "')";
         document.querySelector(".icon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
     },
     search: function(city) {
